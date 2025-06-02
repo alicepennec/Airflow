@@ -1,0 +1,28 @@
+[2025-05-14T19:03:23.805+0000] {processor.py:186} INFO - Started process (PID=57) to work on /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:03:23.808+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-05-14T19:03:23.812+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:03:23.811+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:03:23.835+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:03:23.881+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:03:23.881+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-14T19:03:23.914+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:03:23.914+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2024-02-10 00:00:00+00:00, run_after=2024-02-11 00:00:00+00:00
+[2025-05-14T19:03:23.940+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.145 seconds
+[2025-05-14T19:03:54.146+0000] {processor.py:186} INFO - Started process (PID=127) to work on /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:03:54.147+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-05-14T19:03:54.152+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:03:54.151+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:03:54.177+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:03:54.202+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:03:54.202+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-14T19:03:54.232+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:03:54.232+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2024-02-10 00:00:00+00:00, run_after=2024-02-11 00:00:00+00:00
+[2025-05-14T19:03:54.289+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.152 seconds
+[2025-05-14T19:04:24.984+0000] {processor.py:186} INFO - Started process (PID=191) to work on /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:04:24.986+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-05-14T19:04:24.990+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:04:24.989+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:04:25.026+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:04:25.053+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:04:25.052+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-14T19:04:25.085+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:04:25.085+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2024-02-10 00:00:00+00:00, run_after=2024-02-11 00:00:00+00:00
+[2025-05-14T19:04:25.131+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.158 seconds
+[2025-05-14T19:04:55.282+0000] {processor.py:186} INFO - Started process (PID=255) to work on /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:04:55.284+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-05-14T19:04:55.289+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:04:55.288+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:04:55.318+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-05-14T19:04:55.343+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:04:55.342+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-14T19:04:55.382+0000] {logging_mixin.py:190} INFO - [2025-05-14T19:04:55.382+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2024-02-10 00:00:00+00:00, run_after=2024-02-11 00:00:00+00:00
+[2025-05-14T19:04:55.411+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.139 seconds

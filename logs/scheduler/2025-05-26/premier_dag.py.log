@@ -1,0 +1,7 @@
+[2025-05-26T18:56:33.812+0000] {processor.py:186} INFO - Started process (PID=63) to work on /opt/airflow/dags/premier_dag.py
+[2025-05-26T18:56:33.814+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-05-26T18:56:33.818+0000] {logging_mixin.py:190} INFO - [2025-05-26T18:56:33.817+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-05-26T18:56:33.848+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-05-26T18:56:33.896+0000] {logging_mixin.py:190} INFO - [2025-05-26T18:56:33.896+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-26T18:56:33.928+0000] {logging_mixin.py:190} INFO - [2025-05-26T18:56:33.928+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2024-02-10 00:00:00+00:00, run_after=2024-02-11 00:00:00+00:00
+[2025-05-26T18:56:33.962+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.160 seconds

@@ -1,0 +1,14 @@
+[2025-03-13T13:35:26.531+0000] {processor.py:186} INFO - Started process (PID=57) to work on /opt/airflow/dags/premier_dag.py
+[2025-03-13T13:35:26.532+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-03-13T13:35:26.535+0000] {logging_mixin.py:190} INFO - [2025-03-13T13:35:26.535+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-03-13T13:35:26.555+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-03-13T13:35:26.595+0000] {logging_mixin.py:190} INFO - [2025-03-13T13:35:26.594+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-13T13:35:26.621+0000] {logging_mixin.py:190} INFO - [2025-03-13T13:35:26.621+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2024-02-10 00:00:00+00:00, run_after=2024-02-11 00:00:00+00:00
+[2025-03-13T13:35:26.642+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.116 seconds
+[2025-03-13T13:35:56.742+0000] {processor.py:186} INFO - Started process (PID=120) to work on /opt/airflow/dags/premier_dag.py
+[2025-03-13T13:35:56.746+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-03-13T13:35:56.755+0000] {logging_mixin.py:190} INFO - [2025-03-13T13:35:56.754+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-03-13T13:35:56.789+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-03-13T13:35:56.818+0000] {logging_mixin.py:190} INFO - [2025-03-13T13:35:56.818+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-03-13T13:35:56.861+0000] {logging_mixin.py:190} INFO - [2025-03-13T13:35:56.860+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2024-02-10 00:00:00+00:00, run_after=2024-02-11 00:00:00+00:00
+[2025-03-13T13:35:56.885+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.166 seconds

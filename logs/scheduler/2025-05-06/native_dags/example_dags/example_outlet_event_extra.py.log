@@ -1,0 +1,47 @@
+[2025-05-06T09:21:06.915+0000] {processor.py:186} INFO - Started process (PID=114) to work on /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py
+[2025-05-06T09:21:06.916+0000] {processor.py:914} INFO - Processing file /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py for tasks to queue
+[2025-05-06T09:21:06.920+0000] {logging_mixin.py:190} INFO - [2025-05-06T09:21:06.919+0000] {dagbag.py:588} INFO - Filling up the DagBag from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py
+[2025-05-06T09:21:16.324+0000] {logging_mixin.py:190} INFO - [2025-05-06T09:21:16.324+0000] {process_utils.py:266} INFO - Waiting up to 5 seconds for processes to exit...
+[2025-05-06T09:21:16.325+0000] {logging_mixin.py:190} WARNING - Exception ignored in: <function WeakKeyDictionary.__init__.<locals>.remove at 0x7fc15a3cd260>
+[2025-05-06T09:21:16.326+0000] {logging_mixin.py:190} WARNING - Traceback (most recent call last):
+[2025-05-06T09:21:16.326+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/weakref.py", line 369, in remove
+[2025-05-06T09:21:16.327+0000] {logging_mixin.py:190} WARNING -     def remove(k, selfref=ref(self)):
+[2025-05-06T09:21:16.327+0000] {logging_mixin.py:190} WARNING -   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 466, in _exit_gracefully
+[2025-05-06T09:21:16.328+0000] {logging_mixin.py:190} WARNING -     self.log.debug("Current Stacktrace is: %s", "\n".join(map(str, inspect.stack())))
+[2025-05-06T09:21:16.328+0000] {logging_mixin.py:190} WARNING -                                                                    ^^^^^^^^^^^^^^^
+[2025-05-06T09:21:16.329+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/inspect.py", line 1781, in stack
+[2025-05-06T09:21:16.329+0000] {logging_mixin.py:190} WARNING -     return getouterframes(sys._getframe(1), context)
+[2025-05-06T09:21:16.330+0000] {logging_mixin.py:190} WARNING -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-05-06T09:21:16.331+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/inspect.py", line 1756, in getouterframes
+[2025-05-06T09:21:16.332+0000] {logging_mixin.py:190} WARNING -     traceback_info = getframeinfo(frame, context)
+[2025-05-06T09:21:16.333+0000] {logging_mixin.py:190} WARNING -                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-05-06T09:21:16.333+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/inspect.py", line 1718, in getframeinfo
+[2025-05-06T09:21:16.334+0000] {logging_mixin.py:190} WARNING -     lines, lnum = findsource(frame)
+[2025-05-06T09:21:16.334+0000] {logging_mixin.py:190} WARNING -                   ^^^^^^^^^^^^^^^^^
+[2025-05-06T09:21:16.334+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/inspect.py", line 1092, in findsource
+[2025-05-06T09:21:16.335+0000] {logging_mixin.py:190} WARNING -     lines = linecache.getlines(file, module.__dict__)
+[2025-05-06T09:21:16.335+0000] {logging_mixin.py:190} WARNING -             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-05-06T09:21:16.336+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/linecache.py", line 46, in getlines
+[2025-05-06T09:21:16.336+0000] {logging_mixin.py:190} WARNING -     return updatecache(filename, module_globals)
+[2025-05-06T09:21:16.336+0000] {logging_mixin.py:190} WARNING -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-05-06T09:21:16.337+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/linecache.py", line 141, in updatecache
+[2025-05-06T09:21:16.338+0000] {logging_mixin.py:190} WARNING -     with tokenize.open(fullname) as fp:
+[2025-05-06T09:21:16.338+0000] {logging_mixin.py:190} WARNING -          ^^^^^^^^^^^^^^^^^^^^^^^
+[2025-05-06T09:21:16.338+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/tokenize.py", line 445, in open
+[2025-05-06T09:21:16.339+0000] {logging_mixin.py:190} WARNING -     encoding, lines = detect_encoding(buffer.readline)
+[2025-05-06T09:21:16.339+0000] {logging_mixin.py:190} WARNING -                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-05-06T09:21:16.340+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/tokenize.py", line 414, in detect_encoding
+[2025-05-06T09:21:16.340+0000] {logging_mixin.py:190} WARNING -     first = read_or_stop()
+[2025-05-06T09:21:16.341+0000] {logging_mixin.py:190} WARNING -             ^^^^^^^^^^^^^^
+[2025-05-06T09:21:16.341+0000] {logging_mixin.py:190} WARNING -   File "/usr/local/lib/python3.12/tokenize.py", line 372, in read_or_stop
+[2025-05-06T09:21:16.342+0000] {logging_mixin.py:190} WARNING -     return readline()
+[2025-05-06T09:21:16.342+0000] {logging_mixin.py:190} WARNING -            ^^^^^^^^^^
+[2025-05-06T09:21:16.342+0000] {logging_mixin.py:190} WARNING -   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/dag_processing/manager.py", line 470, in _exit_gracefully
+[2025-05-06T09:21:16.343+0000] {logging_mixin.py:190} WARNING -     sys.exit(os.EX_OK)
+[2025-05-06T09:21:16.343+0000] {logging_mixin.py:190} WARNING - SystemExit: 0
+[2025-05-06T09:21:16.376+0000] {processor.py:925} INFO - DAG(s) 'dataset_with_extra_from_classic_operator', 'dataset_with_extra_by_yield', 'dataset_with_extra_by_context' retrieved from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py
+[2025-05-06T09:21:16.402+0000] {logging_mixin.py:190} INFO - [2025-05-06T09:21:16.402+0000] {dag.py:3239} INFO - Sync 3 DAGs
+[2025-05-06T09:21:16.428+0000] {logging_mixin.py:190} INFO - [2025-05-06T09:21:16.428+0000] {dag.py:4180} INFO - Setting next_dagrun for dataset_with_extra_by_context to 2025-05-05 00:00:00+00:00, run_after=2025-05-06 00:00:00+00:00
+[2025-05-06T09:21:16.434+0000] {logging_mixin.py:190} INFO - [2025-05-06T09:21:16.434+0000] {dag.py:4180} INFO - Setting next_dagrun for dataset_with_extra_by_yield to 2025-05-05 00:00:00+00:00, run_after=2025-05-06 00:00:00+00:00
+[2025-05-06T09:21:16.437+0000] {logging_mixin.py:190} INFO - [2025-05-06T09:21:16.437+0000] {dag.py:4180} INFO - Setting next_dagrun for dataset_with_extra_from_classic_operator to 2025-05-05 00:00:00+00:00, run_after=2025-05-06 00:00:00+00:00
+[2025-05-06T09:21:16.470+0000] {processor.py:208} INFO - Processing /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py took 9.562 seconds
