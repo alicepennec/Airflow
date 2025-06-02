@@ -1477,3 +1477,38 @@ SyntaxError: keyword argument repeated: schedule_interval
 [2025-06-02T10:23:27.989+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:23:27.988+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2025-06-02T10:23:28.010+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:23:28.010+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2025-06-02 09:00:00+00:00, run_after=2025-06-02 10:00:00+00:00
 [2025-06-02T10:23:28.024+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.086 seconds
+[2025-06-02T10:23:59.142+0000] {processor.py:186} INFO - Started process (PID=1478) to work on /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:23:59.143+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-06-02T10:23:59.145+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:23:59.145+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:23:59.160+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:23:47.220+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:23:47.220+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:23:47.244+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:23:47.243+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2025-06-02 09:00:00+00:00, run_after=2025-06-02 10:00:00+00:00
+[2025-06-02T10:23:47.261+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.089 seconds
+[2025-06-02T10:24:17.513+0000] {processor.py:186} INFO - Started process (PID=1492) to work on /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:24:17.514+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-06-02T10:24:17.517+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:24:17.517+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:24:17.531+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:24:17.551+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:24:17.551+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:24:17.571+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:24:17.571+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2025-06-02 09:00:00+00:00, run_after=2025-06-02 10:00:00+00:00
+[2025-06-02T10:24:17.588+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.079 seconds
+[2025-06-02T10:24:47.839+0000] {processor.py:186} INFO - Started process (PID=1509) to work on /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:24:47.840+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-06-02T10:24:47.842+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:24:47.842+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:24:47.857+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:24:47.879+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:24:47.878+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:24:47.902+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:24:47.901+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2025-06-02 09:00:00+00:00, run_after=2025-06-02 10:00:00+00:00
+[2025-06-02T10:24:47.922+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.089 seconds
+[2025-06-02T10:25:18.160+0000] {processor.py:186} INFO - Started process (PID=1526) to work on /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:25:18.161+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-06-02T10:25:18.163+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:25:18.163+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:25:18.179+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:25:18.201+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:25:18.201+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:25:18.222+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:25:18.222+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2025-06-02 09:00:00+00:00, run_after=2025-06-02 10:00:00+00:00
+[2025-06-02T10:25:18.242+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.088 seconds
+[2025-06-02T10:25:47.452+0000] {processor.py:186} INFO - Started process (PID=1546) to work on /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:25:47.453+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/premier_dag.py for tasks to queue
+[2025-06-02T10:25:47.455+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:25:47.455+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:25:47.472+0000] {processor.py:925} INFO - DAG(s) 'premier_dag_test' retrieved from /opt/airflow/dags/premier_dag.py
+[2025-06-02T10:25:47.497+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:25:47.497+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:25:47.522+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:25:47.522+0000] {dag.py:4180} INFO - Setting next_dagrun for premier_dag_test to 2025-06-02 09:00:00+00:00, run_after=2025-06-02 10:00:00+00:00
+[2025-06-02T10:25:47.540+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/premier_dag.py took 0.095 seconds
