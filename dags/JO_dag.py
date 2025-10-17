@@ -21,10 +21,42 @@ def extract_data():
     print(f"Données extraites : {df.shape[0]} lignes")
     return df.to_json()  
 
+def transform_data(**kwargs):
+    ti = kwargs['ti']
+    data = ti.xcom_pull(task_ids='extract_task')
+    df = pd.read_json(data)
+
+    df_transformed = df.drop(
+        columns=[
+            'id_resultat_source',
+            'id_athlete_base_resultats',
+            'id_personne',
+            'id_equipe',
+            'id_pays',
+            'id_evenement',
+            'evenement_en',
+            'id_edition',
+            'id_competition_sport',
+            'competition_en',
+            'id_type_competition',
+            'id_ville_edition',
+            'edition_ville_en',
+            'id_nation_edition_base_resultats',
+            'id_sport',
+            'sport_en',
+            'id_discipline_administrative',
+            'id_specialite',
+            'id_epreuve',
+            'id_federation',
+            'federation_nom_court'
+        ]
+    ).drop_duplicates()
+    return df_transformed.to_json()
+
 # Fonction de chargement des données en base
 def load_data(**kwargs):
     ti = kwargs['ti']
-    data = ti.xcom_pull(task_ids='extract_task')
+    data = ti.xcom_pull(task_ids='transform_task')
     df = pd.read_json(data)
 
     engine = create_engine('postgresql+psycopg2://airflow:airflow@postgres:5432/airflow')
@@ -65,8 +97,9 @@ dag = DAG(
 
 # check_year      = PythonOperator(task_id='check_even_year', python_callable=skip_if_not_even_year, provide_context=True, dag=dag)
 extract_task    = PythonOperator(task_id='extract_task', python_callable=extract_data, dag=dag)
+transform_task = PythonOperator(task_id='transform_task', python_callable=transform_data, provide_context=True, dag=dag)
 load_task       = PythonOperator(task_id='load_task', python_callable=load_data, provide_context=True, dag=dag)
 
 # Définition de l'ordre des tâches
 # check_year >> extract_task >> load_task
-extract_task >> load_task
+extract_task >> transform_task >> load_task

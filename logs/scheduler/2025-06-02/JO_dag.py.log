@@ -1064,3 +1064,115 @@
 [2025-06-02T10:25:47.865+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:25:47.864+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2025-06-02T10:25:47.882+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:25:47.881+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
 [2025-06-02T10:25:47.895+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.460 seconds
+[2025-06-02T10:26:18.049+0000] {processor.py:186} INFO - Started process (PID=1560) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:26:18.050+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:26:18.052+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:26:18.052+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:26:18.417+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:26:18.433+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:26:18.433+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:26:18.448+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:26:18.448+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:26:18.465+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.421 seconds
+[2025-06-02T10:26:49.391+0000] {processor.py:186} INFO - Started process (PID=1582) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:26:49.392+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:26:49.394+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:26:49.393+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:26:49.784+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:26:49.801+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:26:49.801+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:26:49.818+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:26:49.817+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:26:49.836+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.450 seconds
+[2025-06-02T10:27:20.704+0000] {processor.py:186} INFO - Started process (PID=1599) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:27:20.705+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:27:20.707+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:27:20.707+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:27:21.072+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:27:21.088+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:27:21.087+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:27:21.105+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:27:21.104+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:27:21.118+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.419 seconds
+[2025-06-02T10:27:52.038+0000] {processor.py:186} INFO - Started process (PID=1616) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:27:52.039+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:27:52.041+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:27:52.041+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:27:52.421+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:27:52.438+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:27:52.438+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:27:52.454+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:27:52.454+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:27:52.468+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.435 seconds
+[2025-06-02T10:28:12.655+0000] {processor.py:186} INFO - Started process (PID=1633) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:28:12.656+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:28:12.658+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:28:12.658+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:28:13.034+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:28:13.050+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:28:13.050+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:28:13.067+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:28:13.067+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:28:13.084+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.435 seconds
+[2025-06-02T10:28:44.011+0000] {processor.py:186} INFO - Started process (PID=1650) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:28:44.011+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:28:44.013+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:28:44.013+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:28:44.401+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:28:44.420+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:28:44.420+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:28:44.436+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:28:44.435+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:28:44.449+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.444 seconds
+[2025-06-02T10:29:19.618+0000] {processor.py:186} INFO - Started process (PID=1662) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:29:19.618+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:29:19.620+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:29:19.620+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:29:08.012+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:29:08.029+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:29:08.029+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:29:08.044+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:29:08.044+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:29:08.062+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.419 seconds
+[2025-06-02T10:29:39.002+0000] {processor.py:186} INFO - Started process (PID=1685) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:29:39.004+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:29:39.006+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:29:39.006+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:29:39.365+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:29:39.381+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:29:39.381+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:29:39.397+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:29:39.397+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:29:39.411+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.414 seconds
+[2025-06-02T10:30:10.341+0000] {processor.py:186} INFO - Started process (PID=1702) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:30:10.342+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:30:10.344+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:30:10.344+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:30:10.715+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:30:10.732+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:30:10.731+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:30:10.749+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:30:10.748+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:30:10.762+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.426 seconds
+[2025-06-02T10:30:41.688+0000] {processor.py:186} INFO - Started process (PID=1719) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:30:41.689+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:30:41.691+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:30:41.691+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:30:42.077+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:30:42.094+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:30:42.093+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:30:42.111+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:30:42.111+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:30:42.129+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.446 seconds
+[2025-06-02T10:31:13.020+0000] {processor.py:186} INFO - Started process (PID=1736) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:31:13.021+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:31:13.023+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:31:13.023+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:31:13.411+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:31:13.428+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:31:13.428+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:31:13.446+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:31:13.445+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:31:13.462+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.448 seconds
+[2025-06-02T10:31:44.358+0000] {processor.py:186} INFO - Started process (PID=1753) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:31:44.358+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:31:44.360+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:31:44.360+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:31:44.742+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:31:44.760+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:31:44.759+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:31:44.776+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:31:44.775+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:31:44.790+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.437 seconds
+[2025-06-02T10:32:02.970+0000] {processor.py:186} INFO - Started process (PID=1770) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:32:02.970+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:32:02.972+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:32:02.972+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:32:03.352+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:32:03.369+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:32:03.369+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:32:03.386+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:32:03.385+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:32:03.399+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.434 seconds
+[2025-06-02T10:32:40.245+0000] {processor.py:186} INFO - Started process (PID=1776) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:32:40.247+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:32:40.249+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:32:40.249+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:32:40.716+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:32:40.732+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:32:40.732+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:32:40.750+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:32:40.750+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:32:40.766+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.530 seconds
+[2025-06-02T10:33:15.015+0000] {processor.py:186} INFO - Started process (PID=1799) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:33:15.016+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:33:15.018+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:33:15.018+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:33:03.417+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:33:03.435+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:33:03.434+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:33:03.453+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:33:03.453+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:33:03.469+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.435 seconds
+[2025-06-02T10:33:34.388+0000] {processor.py:186} INFO - Started process (PID=1821) to work on /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:33:34.389+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/JO_dag.py for tasks to queue
+[2025-06-02T10:33:34.391+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:33:34.391+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:33:34.797+0000] {processor.py:925} INFO - DAG(s) 'etl_pipeline_JO' retrieved from /opt/airflow/dags/JO_dag.py
+[2025-06-02T10:33:34.816+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:33:34.815+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-06-02T10:33:34.836+0000] {logging_mixin.py:190} INFO - [2025-06-02T10:33:34.836+0000] {dag.py:4180} INFO - Setting next_dagrun for etl_pipeline_JO to 2025-06-02 10:00:00+00:00, run_after=2025-06-02 11:00:00+00:00
+[2025-06-02T10:33:34.850+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/JO_dag.py took 0.466 seconds
