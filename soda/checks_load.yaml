@@ -1,0 +1,6 @@
+checks for table_jo:
+  - duplicate_count(id_resultat) = 0
+  - failed rows:
+      name: "Lignes invalides"
+      fail query: |
+        SELECT * FROM table_jo WHERE classement_epreuve < 0

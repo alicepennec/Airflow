@@ -5,10 +5,10 @@ from airflow import DAG
 from sqlalchemy import create_engine
 from airflow.exceptions import AirflowSkipException
 from airflow.operators.python_operator import PythonOperator
+from airflow.operators.bash import BashOperator
 
-
-# Définition des chemins des fichiers
 INPUT_CSV = "/opt/airflow/dags/data/fact_resultats_epreuves.csv"
+POSTGRES_CONN = 'postgresql+psycopg2://airflow:airflow@postgres:5432/airflow'
 
 # Fonction de vérification de la présence d'un fichier
 def check_new_file():
@@ -18,7 +18,9 @@ def check_new_file():
 # Fonction d'extraction
 def extract_data():
     df = pd.read_csv(INPUT_CSV, sep=',')
-    print(f"Données extraites : {df.shape[0]} lignes")
+    engine = create_engine(POSTGRES_CONN)
+    df.to_sql('staging_extract', engine, if_exists='replace', index=False)
+    print(f"{len(df)} lignes chargées dans staging_extract")
     return df.to_json()  
 
 def transform_data(**kwargs):
@@ -28,28 +30,11 @@ def transform_data(**kwargs):
 
     df_transformed = df.drop(
         columns=[
-            'id_resultat_source',
-            'id_athlete_base_resultats',
-            'id_personne',
-            'id_equipe',
-            'id_pays',
-            'id_evenement',
-            'evenement_en',
-            'id_edition',
-            'id_competition_sport',
-            'competition_en',
-            'id_type_competition',
-            'id_ville_edition',
-            'edition_ville_en',
-            'id_nation_edition_base_resultats',
-            'id_sport',
-            'sport_en',
-            'id_discipline_administrative',
-            'id_specialite',
-            'id_epreuve',
-            'id_federation',
-            'federation_nom_court'
-        ]
+            'id_resultat_source','id_athlete_base_resultats','id_personne','id_equipe',
+            'id_pays','id_evenement','evenement_en','id_edition','id_competition_sport',
+            'competition_en','id_type_competition','id_ville_edition','edition_ville_en',
+            'id_nation_edition_base_resultats','id_sport','sport_en','id_discipline_administrative',
+            'id_specialite','id_epreuve','id_federation','federation_nom_court']
     ).drop_duplicates()
     return df_transformed.to_json()
 
@@ -59,7 +44,7 @@ def load_data(**kwargs):
     data = ti.xcom_pull(task_ids='transform_task')
     df = pd.read_json(data)
 
-    engine = create_engine('postgresql+psycopg2://airflow:airflow@postgres:5432/airflow')
+    engine = create_engine(POSTGRES_CONN)
 
     with engine.connect() as conn:
         # Charger les ID déjà en base
@@ -80,7 +65,7 @@ def load_data(**kwargs):
 # Définition du DAG
 dag = DAG(
     'etl_pipeline_JO',
-    description             = 'Pipeline ETL pour extraire et charger des données CSV dans une base de données PostgreSQL',
+    description             = 'Pipeline ETL & Data Control avec Soda',
     schedule_interval       = '0 * * * *',
     # schedule_interval       = '0 8 * 2,8 *',
     start_date              = datetime(2025, 6, 2),
@@ -88,18 +73,22 @@ dag = DAG(
     is_paused_upon_creation = False 
 )
 
-# # Skip si année impaire 
-# def skip_if_not_even_year(**kwargs):
-#     year = kwargs['execution_date'].year
-#     if year % 2 != 0:
-#         raise AirflowSkipException(f"Année {year} impaire.")
-#     print(f"Année paire détectée : {year}.")
-
-# check_year      = PythonOperator(task_id='check_even_year', python_callable=skip_if_not_even_year, provide_context=True, dag=dag)
 extract_task    = PythonOperator(task_id='extract_task', python_callable=extract_data, dag=dag)
 transform_task = PythonOperator(task_id='transform_task', python_callable=transform_data, provide_context=True, dag=dag)
 load_task       = PythonOperator(task_id='load_task', python_callable=load_data, provide_context=True, dag=dag)
 
-# Définition de l'ordre des tâches
-# check_year >> extract_task >> load_task
-extract_task >> transform_task >> load_task
+# --- Contrôles qualité Soda ---
+run_soda_checks_extract = BashOperator(
+    task_id='run_soda_checks_extract',
+    bash_command='soda scan -d my_data_source -c /opt/airflow/soda/configuration.yaml /opt/airflow/soda/checks_extract.yaml',
+    dag=dag
+)
+
+run_soda_checks_load = BashOperator(
+    task_id='run_soda_checks_load',
+    bash_command='soda scan -d my_data_source -c /opt/airflow/soda/configuration.yaml /opt/airflow/soda/checks_load.yaml',
+    dag=dag
+)
+
+# --- Dépendances ---
+extract_task >> run_soda_checks_extract >> transform_task >> load_task >> run_soda_checks_load  

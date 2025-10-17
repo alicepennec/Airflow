@@ -1,0 +1,127 @@
+[2025-10-17T12:52:44.573+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-10-17T12:52:44.587+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline_JO.run_soda_checks_extract scheduled__2025-10-17T11:00:00+00:00 [queued]>
+[2025-10-17T12:52:44.593+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline_JO.run_soda_checks_extract scheduled__2025-10-17T11:00:00+00:00 [queued]>
+[2025-10-17T12:52:44.594+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-10-17T12:52:44.605+0000] {taskinstance.py:2889} INFO - Executing <Task(BashOperator): run_soda_checks_extract> on 2025-10-17 11:00:00+00:00
+[2025-10-17T12:52:44.612+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=308) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-10-17T12:52:44.614+0000] {standard_task_runner.py:72} INFO - Started process 310 to run task
+[2025-10-17T12:52:44.613+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline_JO', 'run_soda_checks_extract', 'scheduled__2025-10-17T11:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/JO_dag.py', '--cfg-path', '/tmp/tmpbk44o1_l']
+[2025-10-17T12:52:44.614+0000] {standard_task_runner.py:105} INFO - Job 4: Subtask run_soda_checks_extract
+[2025-10-17T12:52:44.651+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_pipeline_JO.run_soda_checks_extract scheduled__2025-10-17T11:00:00+00:00 [running]> on host 89c6cbc72e13
+[2025-10-17T12:52:44.713+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_pipeline_JO' AIRFLOW_CTX_TASK_ID='run_soda_checks_extract' AIRFLOW_CTX_EXECUTION_DATE='2025-10-17T11:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-17T11:00:00+00:00'
+[2025-10-17T12:52:44.715+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-10-17T12:52:44.725+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2025-10-17T12:52:44.726+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'soda scan -d my_data_source -c /opt/***/soda/configuration.yaml /opt/***/soda/checks_extract.yaml']
+[2025-10-17T12:52:44.735+0000] {subprocess.py:99} INFO - Output:
+[2025-10-17T12:52:45.797+0000] {subprocess.py:106} INFO - [12:52:45] Soda Core 3.3.1
+[2025-10-17T12:52:45.922+0000] {subprocess.py:106} INFO - [12:52:45] Query execution error in my_data_source.my_data_source.aggregation[0]: relation "public.my_data_source" does not exist
+[2025-10-17T12:52:45.923+0000] {subprocess.py:106} INFO - LINE 4: FROM public.my_data_source
+[2025-10-17T12:52:45.923+0000] {subprocess.py:106} INFO -              ^
+[2025-10-17T12:52:45.924+0000] {subprocess.py:106} INFO - 
+[2025-10-17T12:52:45.924+0000] {subprocess.py:106} INFO - SELECT
+[2025-10-17T12:52:45.924+0000] {subprocess.py:106} INFO -   COUNT(*),
+[2025-10-17T12:52:45.925+0000] {subprocess.py:106} INFO -   COUNT(CASE WHEN id_resultat IS NULL THEN 1 END)
+[2025-10-17T12:52:45.925+0000] {subprocess.py:106} INFO - FROM public.my_data_source
+[2025-10-17T12:52:45.925+0000] {subprocess.py:106} INFO -   | relation "public.my_data_source" does not exist
+[2025-10-17T12:52:45.926+0000] {subprocess.py:106} INFO -   | LINE 4: FROM public.my_data_source
+[2025-10-17T12:52:45.926+0000] {subprocess.py:106} INFO -   |              ^
+[2025-10-17T12:52:45.926+0000] {subprocess.py:106} INFO - 
+[2025-10-17T12:52:45.927+0000] {subprocess.py:106} INFO - [12:52:45] Metrics 'row_count' were not computed for check 'row_count > 0'
+[2025-10-17T12:52:45.927+0000] {subprocess.py:106} INFO - [12:52:45] Metrics 'missing_count' were not computed for check 'missing_count(id_resultat) = 0'
+[2025-10-17T12:52:45.927+0000] {subprocess.py:106} INFO - [12:52:45] Scan summary:
+[2025-10-17T12:52:45.927+0000] {subprocess.py:106} INFO - [12:52:45] 2/2 checks NOT EVALUATED:
+[2025-10-17T12:52:45.928+0000] {subprocess.py:106} INFO - [12:52:45]     my_data_source in my_data_source
+[2025-10-17T12:52:45.928+0000] {subprocess.py:106} INFO - [12:52:45]       row_count > 0 [NOT EVALUATED]
+[2025-10-17T12:52:45.928+0000] {subprocess.py:106} INFO - [12:52:45]         check_value: None
+[2025-10-17T12:52:45.929+0000] {subprocess.py:106} INFO - [12:52:45]       missing_count(id_resultat) = 0 [NOT EVALUATED]
+[2025-10-17T12:52:45.929+0000] {subprocess.py:106} INFO - [12:52:45]         check_value: None
+[2025-10-17T12:52:45.929+0000] {subprocess.py:106} INFO - [12:52:45] 2 checks not evaluated.
+[2025-10-17T12:52:45.930+0000] {subprocess.py:106} INFO - [12:52:45] 3 errors.
+[2025-10-17T12:52:45.930+0000] {subprocess.py:106} INFO - [12:52:45] Oops! 3 errors. 0 failures. 0 warnings. 0 pass.
+[2025-10-17T12:52:45.930+0000] {subprocess.py:106} INFO - ERRORS:
+[2025-10-17T12:52:45.931+0000] {subprocess.py:106} INFO - [12:52:45] Query execution error in my_data_source.my_data_source.aggregation[0]: relation "public.my_data_source" does not exist
+[2025-10-17T12:52:45.931+0000] {subprocess.py:106} INFO - LINE 4: FROM public.my_data_source
+[2025-10-17T12:52:45.931+0000] {subprocess.py:106} INFO -              ^
+[2025-10-17T12:52:45.931+0000] {subprocess.py:106} INFO - 
+[2025-10-17T12:52:45.932+0000] {subprocess.py:106} INFO - SELECT
+[2025-10-17T12:52:45.932+0000] {subprocess.py:106} INFO -   COUNT(*),
+[2025-10-17T12:52:45.932+0000] {subprocess.py:106} INFO -   COUNT(CASE WHEN id_resultat IS NULL THEN 1 END)
+[2025-10-17T12:52:45.933+0000] {subprocess.py:106} INFO - FROM public.my_data_source
+[2025-10-17T12:52:45.933+0000] {subprocess.py:106} INFO -   | relation "public.my_data_source" does not exist
+[2025-10-17T12:52:45.933+0000] {subprocess.py:106} INFO -   | LINE 4: FROM public.my_data_source
+[2025-10-17T12:52:45.933+0000] {subprocess.py:106} INFO -   |              ^
+[2025-10-17T12:52:45.934+0000] {subprocess.py:106} INFO - 
+[2025-10-17T12:52:45.934+0000] {subprocess.py:106} INFO - [12:52:45] Metrics 'row_count' were not computed for check 'row_count > 0'
+[2025-10-17T12:52:45.934+0000] {subprocess.py:106} INFO - [12:52:45] Metrics 'missing_count' were not computed for check 'missing_count(id_resultat) = 0'
+[2025-10-17T12:52:46.182+0000] {subprocess.py:110} INFO - Command exited with return code 3
+[2025-10-17T12:52:46.190+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 3.
+[2025-10-17T12:52:46.194+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=etl_pipeline_JO, task_id=run_soda_checks_extract, run_id=scheduled__2025-10-17T11:00:00+00:00, execution_date=20251017T110000, start_date=20251017T125244, end_date=20251017T125246
+[2025-10-17T12:52:46.203+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-10-17T12:52:46.203+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 4 for task run_soda_checks_extract (Bash command failed. The command returned a non-zero exit code 3.; 310)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 417, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 3.
+[2025-10-17T12:52:46.233+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-10-17T12:52:46.250+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-17T12:52:46.253+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
