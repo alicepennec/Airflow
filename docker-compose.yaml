@@ -107,6 +107,8 @@ services:
     command: webserver
     ports:
       - "8080:8080"
+    environment:
+      AIRFLOW_CONN_POSTGRES_DEFAULT: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
       interval: 30s
@@ -128,6 +130,8 @@ services:
       timeout: 10s
       retries: 5
       start_period: 30s
+    environment:
+      AIRFLOW_CONN_POSTGRES_DEFAULT: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
     restart: always
     depends_on:
       <<: *airflow-common-depends-on
@@ -229,6 +233,16 @@ services:
   # You can enable flower by adding "--profile flower" option e.g. docker-compose --profile flower up
   # or by explicitly targeted on the command line e.g. docker-compose up flower.
   # See: https://docs.docker.com/compose/profiles/
+
+  streamlit:
+    build: ./streamlit
+    ports:
+      - "8501:8501"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
 
 volumes:
   postgres-db-volume: 

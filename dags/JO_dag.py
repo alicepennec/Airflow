@@ -6,9 +6,14 @@ from sqlalchemy import create_engine
 from airflow.exceptions import AirflowSkipException
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash import BashOperator
+from airflow.hooks.base_hook import BaseHook
 
 INPUT_CSV = "/opt/airflow/dags/data/fact_resultats_epreuves.csv"
-POSTGRES_CONN = 'postgresql+psycopg2://airflow:airflow@postgres:5432/airflow'
+
+def get_engine():
+    conn = BaseHook.get_connection("postgres_default")
+    uri = conn.get_uri()
+    return create_engine(uri)
 
 # Fonction de vérification de la présence d'un fichier
 def check_new_file():
@@ -18,7 +23,7 @@ def check_new_file():
 # Fonction d'extraction
 def extract_data():
     df = pd.read_csv(INPUT_CSV, sep=',')
-    engine = create_engine(POSTGRES_CONN)
+    engine = get_engine
     df.to_sql('staging_extract', engine, if_exists='replace', index=False)
     print(f"{len(df)} lignes chargées dans staging_extract")
     return df.to_json()  
@@ -44,7 +49,7 @@ def load_data(**kwargs):
     data = ti.xcom_pull(task_ids='transform_task')
     df = pd.read_json(data)
 
-    engine = create_engine(POSTGRES_CONN)
+    engine = get_engine
 
     with engine.connect() as conn:
         # Charger les ID déjà en base

@@ -1,0 +1,28 @@
+[2025-11-14T11:00:08.781+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-11-14T11:00:08.793+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline_JO.run_soda_checks_extract scheduled__2025-11-14T10:00:00+00:00 [queued]>
+[2025-11-14T11:00:08.798+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline_JO.run_soda_checks_extract scheduled__2025-11-14T10:00:00+00:00 [queued]>
+[2025-11-14T11:00:08.799+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-11-14T11:00:08.809+0000] {taskinstance.py:2889} INFO - Executing <Task(BashOperator): run_soda_checks_extract> on 2025-11-14 10:00:00+00:00
+[2025-11-14T11:00:08.817+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=325) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-14T11:00:08.816+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline_JO', 'run_soda_checks_extract', 'scheduled__2025-11-14T10:00:00+00:00', '--job-id', '49', '--raw', '--subdir', 'DAGS_FOLDER/JO_dag.py', '--cfg-path', '/tmp/tmpfiqdjnyy']
+[2025-11-14T11:00:08.818+0000] {standard_task_runner.py:72} INFO - Started process 327 to run task
+[2025-11-14T11:00:08.818+0000] {standard_task_runner.py:105} INFO - Job 49: Subtask run_soda_checks_extract
+[2025-11-14T11:00:08.853+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_pipeline_JO.run_soda_checks_extract scheduled__2025-11-14T10:00:00+00:00 [running]> on host 802362aa861f
+[2025-11-14T11:00:08.914+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_pipeline_JO' AIRFLOW_CTX_TASK_ID='run_soda_checks_extract' AIRFLOW_CTX_EXECUTION_DATE='2025-11-14T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-14T10:00:00+00:00'
+[2025-11-14T11:00:08.915+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-11-14T11:00:08.924+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2025-11-14T11:00:08.925+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'soda scan -d my_data_source -c /opt/***/soda/configuration.yaml /opt/***/soda/checks_extract.yaml']
+[2025-11-14T11:00:08.933+0000] {subprocess.py:99} INFO - Output:
+[2025-11-14T11:00:09.954+0000] {subprocess.py:106} INFO - [11:00:09] Soda Core 3.3.1
+[2025-11-14T11:00:10.048+0000] {subprocess.py:106} INFO - [11:00:10] Scan summary:
+[2025-11-14T11:00:10.049+0000] {subprocess.py:106} INFO - [11:00:10] 2/2 checks PASSED:
+[2025-11-14T11:00:10.050+0000] {subprocess.py:106} INFO - [11:00:10]     staging_extract in my_data_source
+[2025-11-14T11:00:10.051+0000] {subprocess.py:106} INFO - [11:00:10]       row_count > 0 [PASSED]
+[2025-11-14T11:00:10.051+0000] {subprocess.py:106} INFO - [11:00:10]       missing_count(id_resultat) = 0 [PASSED]
+[2025-11-14T11:00:10.052+0000] {subprocess.py:106} INFO - [11:00:10] All is good. No failures. No warnings. No errors.
+[2025-11-14T11:00:10.282+0000] {subprocess.py:110} INFO - Command exited with return code 0
+[2025-11-14T11:00:10.301+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-11-14T11:00:10.302+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_pipeline_JO, task_id=run_soda_checks_extract, run_id=scheduled__2025-11-14T10:00:00+00:00, execution_date=20251114T100000, start_date=20251114T110008, end_date=20251114T110010
+[2025-11-14T11:00:10.317+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-11-14T11:00:10.339+0000] {taskinstance.py:3895} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-14T11:00:10.340+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
