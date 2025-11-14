@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from datetime import datetime
 from airflow import DAG
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from airflow.exceptions import AirflowSkipException
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash import BashOperator
@@ -23,7 +23,7 @@ def check_new_file():
 # Fonction d'extraction
 def extract_data():
     df = pd.read_csv(INPUT_CSV, sep=',')
-    engine = get_engine
+    engine = get_engine()
     df.to_sql('staging_extract', engine, if_exists='replace', index=False)
     print(f"{len(df)} lignes chargées dans staging_extract")
     return df.to_json()  
@@ -49,12 +49,49 @@ def load_data(**kwargs):
     data = ti.xcom_pull(task_ids='transform_task')
     df = pd.read_json(data)
 
-    engine = get_engine
+    engine = get_engine()
 
-    with engine.connect() as conn:
+    with engine.begin() as conn:
+        # Création de la table
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS resultats (
+                id_resultat INT PRIMARY KEY,
+                source TEXT,
+                athlete_nom TEXT,
+                athlete_prenom TEXT,
+                equipe_en TEXT,
+                pays_en_base_resultats TEXT,
+                classement_epreuve FLOAT,
+                performance_finale_texte TEXT,
+                performance_finale FLOAT,
+                evenement TEXT,
+                categorie_age TEXT,
+                type_competition TEXT,
+                edition_saison INT,
+                date_debut_edition TIMESTAMP,
+                date_fin_edition TIMESTAMP,
+                edition_nation_en TEXT,
+                sport TEXT,
+                discipline_administrative TEXT,
+                specialite TEXT,
+                epreuve TEXT,
+                epreuve_genre TEXT,
+                epreuve_type TEXT,
+                est_epreuve_individuelle INT,
+                est_epreuve_olympique INT,
+                est_epreuve_ete INT,
+                est_epreuve_handi INT,
+                epreuve_sens_resultat INT,
+                federation TEXT,
+                dt_creation TIMESTAMP,
+                dt_modification TIMESTAMP
+            );
+        """))
+        print("Table resultats créée ou déjà existante")
+        
         # Charger les ID déjà en base
         try:
-            existing_ids = pd.read_sql("SELECT id_resultat FROM table_jo", conn)
+            existing_ids = pd.read_sql("SELECT id_resultat FROM resultats", conn)
             # Filtrer les nouvelles lignes
             df_new = df[~df['id_resultat'].isin(existing_ids['id_resultat'])]
             
@@ -64,7 +101,7 @@ def load_data(**kwargs):
         if df_new.empty:
             print("Aucune nouvelle ligne à insérer.")
         else:
-            df_new.to_sql('table_jo', conn, if_exists='append', index=False)
+            df_new.to_sql('resultats', conn, if_exists='append', index=False)
             print(f"{len(df_new)} nouvelles lignes insérées.")
 
 # Définition du DAG
