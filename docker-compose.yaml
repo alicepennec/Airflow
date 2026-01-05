@@ -244,7 +244,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      DATABASE_URL: postgresql+psycopg2://airflow:airflow@postgres:5432/jo_data
 
 volumes:
   postgres-db-volume: 
