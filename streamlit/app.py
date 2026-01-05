@@ -32,7 +32,7 @@ Saisissez votre requête SQL ci-dessous et visualisez les résultats en temps r�
 
 # Barre latérale (Sidebar) pour l'aide
 with st.sidebar:
-    #st.header("📋 Aide-mémoire")
+    st.header("📋 Structure de la table")
     st.info("Table disponible : **resultats**")
     if st.button("Voir la structure de la table"):
         try:
