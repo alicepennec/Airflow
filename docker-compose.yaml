@@ -64,6 +64,9 @@ x-airflow-common:
     # See https://airflow.apache.org/docs/apache-airflow/stable/administration-and-deployment/logging-monitoring/check-health.html#scheduler-health-check-server
     # yamllint enable rule:line-length
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    AIRFLOW__SCHEDULER__MIN_FILE_PROCESS_INTERVAL: 300  # Scan toutes les 5 min
+    AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 600
+    AIRFLOW__LOGGING__LOGGING_LEVEL: WARNING
     AIRFLOW_CONN_JO_DATA: postgresql+psycopg2://airflow:airflow@postgres:5432/jo_data
     # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
     # for other purpose (development, test and especially production usage) build/extend Airflow image.
