@@ -120,7 +120,7 @@ def load_data(**kwargs):
 dag = DAG(
     'etl_pipeline_JO',
     description             = 'Pipeline ETL & Data Control avec Soda',
-    schedule_interval       = '',
+    schedule_interval       = None,
     start_date              = datetime(2025, 6, 2),
     catchup                 = False,
     is_paused_upon_creation = False 
