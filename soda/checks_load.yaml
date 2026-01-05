@@ -3,4 +3,4 @@ checks for table_jo:
   - failed rows:
       name: "Lignes invalides"
       fail query: |
-        SELECT * FROM table_jo WHERE classement_epreuve < 0
+        SELECT * FROM resultats WHERE classement_epreuve < 0

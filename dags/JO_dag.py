@@ -9,7 +9,9 @@ from airflow.operators.bash import BashOperator
 from airflow.hooks.base_hook import BaseHook
 
 INPUT_CSV = "/opt/airflow/dags/data/fact_resultats_epreuves.csv"
+TEMP_PARQUET = "/opt/airflow/data/transformed_data.parquet"
 
+# Fonction de création de la connexion SQLAlchemy
 def get_engine():
     conn = BaseHook.get_connection("jo_data")
     uri = conn.get_uri()
@@ -26,24 +28,20 @@ def extract_data():
     engine = get_engine()
     df.to_sql('staging_extract', engine, if_exists='replace', index=False)
     print(f"{len(df)} lignes chargées dans staging_extract")
-    return df.to_json()  
+    return INPUT_CSV
 
 def transform_data(**kwargs):
-    ti = kwargs['ti']
-    data = ti.xcom_pull(task_ids='extract_task')
-    df = pd.read_json(data)
+    df = pd.read_csv(INPUT_CSV, sep=',')
 
-    df_transformed = df.drop(
-        columns=[
+    columns_to_drop = [
             'id_resultat_source','id_athlete_base_resultats','id_personne','id_equipe',
             'id_pays','id_evenement','evenement_en','id_edition','id_competition_sport',
             'competition_en','id_type_competition','id_ville_edition','edition_ville_en',
             'id_nation_edition_base_resultats','id_sport','sport_en','id_discipline_administrative',
             'id_specialite','id_epreuve','id_federation','federation_nom_court']
-    ).drop_duplicates()
+    df_transformed = df.drop(columns=columns_to_drop, errors='ignore').drop_duplicates()
     
     date_columns = ['date_debut_edition', 'date_fin_edition', 'dt_creation', 'dt_modification']
-    
     for col in date_columns:
         if col in df_transformed.columns:
             # Convertir en datetime avec le format français DD/MM/YYYY
@@ -52,14 +50,14 @@ def transform_data(**kwargs):
                 format='%d/%m/%Y',
                 errors='coerce'
             )
-    
-    return df_transformed.to_json()
+    df_transformed.to_parquet(TEMP_PARQUET, index=False)
+    return TEMP_PARQUET
 
 # Fonction de chargement des données en base
 def load_data(**kwargs):
     ti = kwargs['ti']
     data = ti.xcom_pull(task_ids='transform_task')
-    df = pd.read_json(data)
+    df = pd.read_parquet(data)
 
     engine = get_engine()
 
