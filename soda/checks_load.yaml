@@ -1,4 +1,4 @@
-checks for table_jo:
+checks for resultats :
   - duplicate_count(id_resultat) = 0
   - failed rows:
       name: "Lignes invalides"
