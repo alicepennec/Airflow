@@ -3,5 +3,5 @@ data_source my_data_source:
   host: postgres
   username: airflow
   password: airflow
-  database: airflow
+  database: jo_data
   schema: public

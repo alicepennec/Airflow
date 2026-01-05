@@ -4,14 +4,14 @@ from datetime import datetime
 from airflow import DAG
 from sqlalchemy import create_engine, text
 from airflow.exceptions import AirflowSkipException
-from airflow.operators.python_operator import PythonOperator
+from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from airflow.hooks.base_hook import BaseHook
 
 INPUT_CSV = "/opt/airflow/dags/data/fact_resultats_epreuves.csv"
 
 def get_engine():
-    conn = BaseHook.get_connection("postgres_default")
+    conn = BaseHook.get_connection("jo_data")
     uri = conn.get_uri()
     return create_engine(uri)
 
@@ -41,6 +41,18 @@ def transform_data(**kwargs):
             'id_nation_edition_base_resultats','id_sport','sport_en','id_discipline_administrative',
             'id_specialite','id_epreuve','id_federation','federation_nom_court']
     ).drop_duplicates()
+    
+    date_columns = ['date_debut_edition', 'date_fin_edition', 'dt_creation', 'dt_modification']
+    
+    for col in date_columns:
+        if col in df_transformed.columns:
+            # Convertir en datetime avec le format français DD/MM/YYYY
+            df_transformed[col] = pd.to_datetime(
+                df_transformed[col], 
+                format='%d/%m/%Y',
+                errors='coerce'
+            )
+    
     return df_transformed.to_json()
 
 # Fonction de chargement des données en base
@@ -116,8 +128,8 @@ dag = DAG(
 )
 
 extract_task    = PythonOperator(task_id='extract_task', python_callable=extract_data, dag=dag)
-transform_task = PythonOperator(task_id='transform_task', python_callable=transform_data, provide_context=True, dag=dag)
-load_task       = PythonOperator(task_id='load_task', python_callable=load_data, provide_context=True, dag=dag)
+transform_task = PythonOperator(task_id='transform_task', python_callable=transform_data, dag=dag)
+load_task       = PythonOperator(task_id='load_task', python_callable=load_data, dag=dag)
 
 # --- Contrôles qualité Soda ---
 run_soda_checks_extract = BashOperator(
