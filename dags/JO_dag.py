@@ -31,7 +31,9 @@ def extract_data():
     return INPUT_CSV
 
 def transform_data(**kwargs):
-    df = pd.read_csv(INPUT_CSV, sep=',')
+    ti = kwargs['ti']
+    data = ti.xcom_pull(task_ids='extract_task')
+    df = pd.read_csv(data, sep=',')
 
     columns_to_drop = [
             'id_resultat_source','id_athlete_base_resultats','id_personne','id_equipe',
@@ -121,8 +123,6 @@ dag = DAG(
     schedule_interval       = '@hourly',
     start_date              = datetime(2025, 6, 2),
     catchup                 = False,
-    retries                 = 1,
-    retry_delay             = 300,
     is_paused_upon_creation = False 
 )
 
