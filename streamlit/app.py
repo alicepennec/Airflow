@@ -48,7 +48,7 @@ with st.sidebar:
 tab1, tab2, tab3 = st.tabs(["📊 Exploration Générale", "🔍 Recherche Athlète", "🛠️ Gestion Athlète"])
 
 with tab1:
-    limit = st.slider("Nombre de résultats à récupérer", 1, 100, 10)
+    limit = st.slider("Nombre de résultats à récupérer", 1, 1000, 10)
     if st.button("🚀 Récupérer les données"):
         try:
             # Appel au endpoint de l'API
