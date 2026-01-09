@@ -40,7 +40,9 @@ def transform_data(**kwargs):
             'id_pays','id_evenement','evenement_en','id_edition','id_competition_sport',
             'competition_en','id_type_competition','id_ville_edition','edition_ville_en',
             'id_nation_edition_base_resultats','id_sport','sport_en','id_discipline_administrative',
-            'id_specialite','id_epreuve','id_federation','federation_nom_court']
+            'id_specialite','id_epreuve','id_federation','federation_nom_court', 'pays_en_base_resultats',
+            'performance_finale_texte', 'evenement', 'discipline_administrative', 'specialite', 
+            'est_epreuve_individuelle', 'est_epreuve_olympique','est_epreuve_ete', 'federation']
     df_transformed = df.drop(columns=columns_to_drop, errors='ignore').drop_duplicates()
     
     date_columns = ['date_debut_edition', 'date_fin_edition', 'dt_creation', 'dt_modification']
@@ -72,11 +74,8 @@ def load_data(**kwargs):
                 athlete_nom TEXT,
                 athlete_prenom TEXT,
                 equipe_en TEXT,
-                pays_en_base_resultats TEXT,
                 classement_epreuve FLOAT,
-                performance_finale_texte TEXT,
                 performance_finale FLOAT,
-                evenement TEXT,
                 categorie_age TEXT,
                 type_competition TEXT,
                 edition_saison INT,
@@ -84,17 +83,11 @@ def load_data(**kwargs):
                 date_fin_edition TIMESTAMP,
                 edition_nation_en TEXT,
                 sport TEXT,
-                discipline_administrative TEXT,
-                specialite TEXT,
                 epreuve TEXT,
                 epreuve_genre TEXT,
                 epreuve_type TEXT,
-                est_epreuve_individuelle INT,
-                est_epreuve_olympique INT,
-                est_epreuve_ete INT,
                 est_epreuve_handi INT,
                 epreuve_sens_resultat INT,
-                federation TEXT,
                 dt_creation TIMESTAMP,
                 dt_modification TIMESTAMP
             );
