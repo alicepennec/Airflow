@@ -54,6 +54,7 @@ def transform_data(**kwargs):
                 format='%d/%m/%Y',
                 errors='coerce'
             )
+            df_transformed[col] = df_transformed[col].dt.date
     df_transformed.to_parquet(TEMP_PARQUET, index=False)
     return TEMP_PARQUET
 
@@ -79,8 +80,8 @@ def load_data(**kwargs):
                 categorie_age TEXT,
                 type_competition TEXT,
                 edition_saison INT,
-                date_debut_edition TIMESTAMP,
-                date_fin_edition TIMESTAMP,
+                date_debut_edition DATE,
+                date_fin_edition DATE,
                 edition_nation_en TEXT,
                 sport TEXT,
                 epreuve TEXT,

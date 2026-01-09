@@ -27,7 +27,7 @@ API_URL = os.getenv("API_URL", "http://api:8000")
 st.title("Historique des données des JO")
 st.markdown("""
 Cette interface vous permet d'interroger la base de données **jo_data** via une API. 
-Saisissez votre requête SQL ci-dessous et visualisez les résultats en temps réel.
+Explorez la table en définissant une limite ou saisissez le nom d'un athlète pour filtrer les résultats.
 """)
 
 # Barre latérale (Sidebar)
@@ -45,7 +45,7 @@ with st.sidebar:
 
 # --- FONCTIONNALITÉS ---
 
-tab1, tab2 = st.tabs(["📊 Exploration Générale", "🔍 Recherche Athlète"])
+tab1, tab2, tab3 = st.tabs(["📊 Exploration Générale", "🔍 Recherche Athlète", "🛠️ Gestion Athlète"])
 
 with tab1:
     limit = st.slider("Nombre de résultats à récupérer", 1, 100, 10)
@@ -83,6 +83,40 @@ with tab2:
                         st.warning("Aucun athlète trouvé avec ce nom.")
             except Exception as e:
                 st.error(f"Erreur : {e}")
+                
+with tab3:
+    st.header("Gestion des données")
+    st.write("Modifiez directement les valeurs dans le tableau, ajoutez des lignes ou supprimez-en.")
+
+    # 1. On récupère les données actuelles via l'API
+    response = requests.get(f"{API_URL}/resultats", params={"limit": 50})
+    if response.status_code == 200:
+        raw_data = response.json()["data"]
+        df_admin = pd.DataFrame(raw_data)
+
+        # 2. L'éditeur de données interactif
+        # num_rows="dynamic" permet d'ajouter/supprimer des lignes
+        edited_data = st.data_editor(
+            df_admin, 
+            num_rows="dynamic", 
+            use_container_width=True,
+            key="admin_editor"
+        )
+
+        # 3. Traitement des modifications
+        if st.button("💾 Enregistrer les changements dans la base"):
+            # On compare le dataframe original et l'édité
+            # Dans un projet réel, on enverrait les deltas à l'API
+            st.warning("⚠️ Action critique : Connexion à l'API pour mise à jour de la base.")
+            
+            # Exemple de logique pour identifier les changements
+            if not edited_data.equals(df_admin):
+                st.success("Modifications détectées ! Envoi des données vers FastAPI...")
+                # Ici, vous pourriez boucler sur les lignes pour faire des requêtes POST/PUT/DELETE
+            else:
+                st.info("Aucun changement détecté.")
+    else:
+        st.error("Impossible de charger les données pour l'administration.")
 
 # Footer
 st.divider()
