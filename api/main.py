@@ -10,6 +10,24 @@ app = FastAPI(title="JO Data API")
 DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(DATABASE_URL)
 
+# Modèle pour recevoir la requête
+class SQLQuery(BaseModel):
+    query: str
+
+@app.post("/query")
+def execute_custom_query(sql: SQLQuery):
+    try:
+        with engine.connect() as conn:
+            # On exécute la requête envoyée par Streamlit
+            result = conn.execute(text(sql.query))
+            
+            # Récupération des données et des colonnes
+            data = [dict(row._mapping) for row in result]
+            return {"status": "success", "data": data}
+    except Exception as e:
+        # On renvoie l'erreur SQL pour aider l'utilisateur
+        raise HTTPException(status_code=400, detail=str(e))
+    
 # Modèle pour l'ajout/modification
 class Resultat(BaseModel):
     id_resultat: int

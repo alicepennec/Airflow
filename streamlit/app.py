@@ -45,29 +45,75 @@ with st.sidebar:
 
 # --- FONCTIONNALITÉS ---
 
-tab1, tab2, tab3 = st.tabs(["📊 Exploration Générale", "🔍 Recherche Athlète", "🛠️ Gestion Athlète"])
+tab1, tab2, tab3 = st.tabs(["📊 Exploration Générale", "🔍 Recherche Athlète", "🛠️ Gestion des données"])
 
-with tab1:
-    limit = st.slider("Nombre de résultats à récupérer", 1, 1000, 10)
-    if st.button("🚀 Récupérer les données"):
-        try:
-            # Appel au endpoint de l'API
-            response = requests.get(f"{API_URL}/resultats", params={"limit": limit})
+#with tab1:
+#    limit = st.slider("Nombre de résultats à récupérer", 1, 1000, 10)
+#    if st.button("🚀 Récupérer les données"):
+#        try:
+#            # Appel au endpoint de l'API
+#            response = requests.get(f"{API_URL}/resultats", params={"limit": limit})
+#            
+#            if response.status_code == 200:
+#                result_json = response.json()
+#                df = pd.DataFrame(result_json["data"])
+#                
+#                st.metric("Lignes récupérées", result_json["count"])
+#                st.dataframe(df, use_container_width=True)
+#                
+#                csv = df.to_csv(index=False).encode("utf-8")
+#                st.download_button("📥 Télécharger CSV", csv, "export_api.csv", "text/csv")
+#            else:
+#                st.error(f"Erreur API : {response.status_code}")
+#        except Exception as e:
+#            st.error(f"Erreur de connexion : {e}")
             
-            if response.status_code == 200:
-                result_json = response.json()
-                df = pd.DataFrame(result_json["data"])
-                
-                st.metric("Lignes récupérées", result_json["count"])
-                st.dataframe(df, use_container_width=True)
-                
-                csv = df.to_csv(index=False).encode("utf-8")
-                st.download_button("📥 Télécharger CSV", csv, "export_api.csv", "text/csv")
-            else:
-                st.error(f"Erreur API : {response.status_code}")
-        except Exception as e:
-            st.error(f"Erreur de connexion : {e}")
+with tab1:
+    st.subheader("✍️ SQL Query via API")
+    st.markdown("Interrogez la base de données de manière sécurisée via l'API.")
 
+    # Zone de saisie
+    default_query = "SELECT * FROM resultats LIMIT 10"
+    query_input = st.text_area("Entrez votre requête SQL :", value=default_query, height=150)
+
+    if st.button("🚀 Exécuter la requête"):
+        try:
+            # Envoi de la requête à l'API
+            response = requests.post(
+                f"{API_URL}/query", 
+                json={"query": query_input}
+            )
+
+            if response.status_code == 200:
+                results = response.json()["data"]
+                
+                if results:
+                    df_res = pd.DataFrame(results)
+                    
+                    # Affichage des métriques
+                    st.metric("Lignes trouvées", len(df_res))
+                    
+                    # Affichage du tableau
+                    st.dataframe(df_res, use_container_width=True)
+
+                    # Bouton de téléchargement
+                    csv = df_res.to_csv(index=False).encode("utf-8")
+                    st.download_button(
+                        label="📥 Télécharger les résultats (CSV)",
+                        data=csv,
+                        file_name="export_sql_api.csv",
+                        mime="text/csv"
+                    )
+                else:
+                    st.warning("La requête a réussi mais n'a retourné aucun résultat.")
+            else:
+                # Affichage de l'erreur renvoyée par l'API (ex: erreur de syntaxe SQL)
+                error_detail = response.json().get("detail", "Erreur inconnue")
+                st.error(f"❌ Erreur SQL : {error_detail}")
+
+        except Exception as e:
+            st.error(f"❌ Erreur de connexion à l'API : {e}")
+            
 with tab2:
     nom_athlete = st.text_input("Nom de l'athlète (ex: Bolt)")
     if st.button("🔍 Rechercher"):
