@@ -54,7 +54,7 @@ x-airflow-common:
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
-    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    #AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
@@ -66,7 +66,7 @@ x-airflow-common:
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     AIRFLOW__SCHEDULER__MIN_FILE_PROCESS_INTERVAL: 300  # Scan toutes les 5 min
     AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL: 600
-    AIRFLOW__LOGGING__LOGGING_LEVEL: WARNING
+    AIRFLOW__LOGGING__LOGGING_LEVEL: ERROR
     AIRFLOW_CONN_JO_DATA: postgresql+psycopg2://airflow:airflow@postgres:5432/jo_data
     # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
     # for other purpose (development, test and especially production usage) build/extend Airflow image.
@@ -81,6 +81,7 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     - ${AIRFLOW_PROJ_DIR:-.}/soda:/opt/airflow/soda
+    - ${AIRFLOW_PROJ_DIR:-.}/api:/opt/airflow/api
   
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
