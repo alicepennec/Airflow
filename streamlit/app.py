@@ -46,28 +46,6 @@ with st.sidebar:
 # --- FONCTIONNALITÉS ---
 
 tab1, tab2, tab3 = st.tabs(["📊 Exploration Générale", "🔍 Recherche Athlète", "🛠️ Gestion des données"])
-
-#with tab1:
-#    limit = st.slider("Nombre de résultats à récupérer", 1, 1000, 10)
-#    if st.button("🚀 Récupérer les données"):
-#        try:
-#            # Appel au endpoint de l'API
-#            response = requests.get(f"{API_URL}/resultats", params={"limit": limit})
-#            
-#            if response.status_code == 200:
-#                result_json = response.json()
-#                df = pd.DataFrame(result_json["data"])
-#                
-#                st.metric("Lignes récupérées", result_json["count"])
-#                st.dataframe(df, use_container_width=True)
-#                
-#                csv = df.to_csv(index=False).encode("utf-8")
-#                st.download_button("📥 Télécharger CSV", csv, "export_api.csv", "text/csv")
-#            else:
-#                st.error(f"Erreur API : {response.status_code}")
-#        except Exception as e:
-#            st.error(f"Erreur de connexion : {e}")
-            
 with tab1:
     st.subheader("✍️ SQL Query via API")
     st.markdown("Interrogez la base de données de manière sécurisée via l'API.")
@@ -151,16 +129,39 @@ with tab3:
 
         # 3. Traitement des modifications
         if st.button("💾 Enregistrer les changements dans la base"):
-            # On compare le dataframe original et l'édité
-            # Dans un projet réel, on enverrait les deltas à l'API
-            st.warning("⚠️ Action critique : Connexion à l'API pour mise à jour de la base.")
-            
-            # Exemple de logique pour identifier les changements
             if not edited_data.equals(df_admin):
-                st.success("Modifications détectées ! Envoi des données vers FastAPI...")
-                # Ici, vous pourriez boucler sur les lignes pour faire des requêtes POST/PUT/DELETE
+                st.warning("🔄 Communication avec l'API en cours...")
+                
+                # On compare ligne par ligne pour ne mettre à jour que ce qui a changé
+                for index, row in edited_data.iterrows():
+                    if not row.equals(df_admin.iloc[index]):
+                        # Préparation des données pour l'API
+                        payload = {
+                            "id_resultat": int(row['id_resultat']),
+                            "athlete_nom": str(row['athlete_nom']),
+                            "athlete_prenom": str(row['athlete_prenom']),
+                            "sport": str(row['sport']),
+                            "classement_epreuve": float(row['classement_epreuve'])
+                        }
+                        
+                        try:
+                            # Appel de l'endpoint PUT
+                            res = requests.put(
+                                f"{API_URL}/resultats/{int(row['id_resultat'])}",
+                                json=payload
+                            )
+                            
+                            if res.status_code == 200:
+                                st.toast(f"✅ Mis à jour : {row['athlete_nom']}", icon="✔️")
+                            else:
+                                st.error(f"❌ Erreur sur l'ID {row['id_resultat']} : {res.json().get('detail')}")
+                        except Exception as e:
+                            st.error(f"❌ Erreur de connexion : {e}")
+                
+                st.success("✨ Modifications terminées !")
+                st.rerun() # Pour rafraîchir le tableau avec les nouvelles valeurs de la base
             else:
-                st.info("Aucun changement détecté.")
+                st.info("ℹ️ Aucun changement détecté dans le tableau.")
     else:
         st.error("Impossible de charger les données pour l'administration.")
 

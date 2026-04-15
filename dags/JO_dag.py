@@ -8,7 +8,7 @@ from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from airflow.hooks.base_hook import BaseHook
 
-INPUT_CSV = "/opt/airflow/dags/data/fact_resultats_epreuves.csv"
+DATA_FOLDER = "/opt/airflow/dags/data"
 TEMP_PARQUET = "/opt/airflow/data/transformed_data.parquet"
 
 # Fonction de création de la connexion SQLAlchemy
@@ -17,22 +17,33 @@ def get_engine():
     uri = conn.get_uri()
     return create_engine(uri)
 
-# Fonction de vérification de la présence d'un fichier
-def check_new_file():
-    folder = "/opt/airflow/dags/data/"
-    return any(f.endswith(".csv") for f in os.listdir(folder))
-
 # Fonction d'extraction
 def extract_data():
-    df = pd.read_csv(INPUT_CSV, sep=',')
+    # 1. Lister les fichiers CSV dans le dossier
+    files = [f for f in os.listdir(DATA_FOLDER) if f.endswith('.csv')]
+    
+    if not files:
+        # Si aucun fichier n'est là, on arrête proprement la tâche
+        raise AirflowSkipException("Aucun fichier CSV trouvé dans le dossier data.")
+
+    # 2. On prend le premier fichier trouvé
+    target_file = os.path.join(DATA_FOLDER, files[0])
+    print(f"Traitement du fichier : {target_file}")
+
+    # 3. Lecture et staging
+    df = pd.read_csv(target_file, sep=',')
     engine = get_engine()
     df.to_sql('staging_extract', engine, if_exists='replace', index=False)
+    
     print(f"{len(df)} lignes chargées dans staging_extract")
-    return INPUT_CSV
+    
+    return target_file
 
 def transform_data(**kwargs):
     ti = kwargs['ti']
     data = ti.xcom_pull(task_ids='extract_task')
+    if not data:
+        raise ValueError("Le chemin du fichier n'a pas été reçu via XCom")
     df = pd.read_csv(data, sep=',')
 
     columns_to_drop = [
